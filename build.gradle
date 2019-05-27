@@ -1,0 +1,31 @@
+plugins {
+    id 'org.springframework.boot' version '2.1.4.RELEASE'
+    id 'java'
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+group = 'net.ciqiu'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation(
+            "org.springframework.boot:spring-boot-starter-web",
+            "org.springframework.boot:spring-boot-starter-undertow",
+    )
+
+    testImplementation(
+            "org.springframework.boot:spring-boot-starter-test",
+    )
+}
+
+//依赖排除
+configurations {
+    all*.exclude module: "spring-boot-starter-tomcat"
+    all*.exclude module: "spring-boot-starter-logging"
+}
